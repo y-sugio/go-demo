@@ -32,11 +32,11 @@ func viewHandler(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "<h1>%s<h1><div>%s</div>", p.Title, p.Body)
 }
 
-func editHandler(w http.ResponseWriter, r * http.Request){
-	titel := r.URL.Path[len("/edit/")]
-	p, _ := laodPage(title)
-	fmt.Fprintf(w, "<h1>%s<h1><div>%s</div>", p.Title, p.Body)
-}
+//func editHandler(w http.ResponseWriter, r * http.Request){
+//	titel := r.URL.Path[len("/edit/")]
+//	p, _ := laodPage(title)
+//	fmt.Fprintf(w, "<h1>%s<h1><div>%s</div>", p.Title, p.Body)
+//}
 
 func main(){
 
