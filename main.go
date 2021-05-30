@@ -45,8 +45,8 @@ func main(){
 
 	http.HandleFunc("/view/", viewHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
-	//p1 := &Page{Title: "test", Body: []byte("This is sample Page.")}
-	//saveErr := p1.save()
+	p1 := &Page{Title: "test", Body: []byte("This is sample Page.")}
+	p1.save()
 	//if saveE
 	//rr != nil {
 	//	fmt.Println(saveErr)
