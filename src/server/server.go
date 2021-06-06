@@ -1,37 +1,18 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/labstack/echo"
+	"handler"
+	"infrastructure"
+	"usecase"
 )
 
-type User struct {
-	Name  string `json:"name,omitempty"`
-	Email string `json:"email,omitempty"`
-	Password string `json:"password,omitempty"`
-}
-
 func main() {
+	userRepository := infrastructure.NewTaskRepository()
+	userUseCase := usecase.NewUserUseCase(userRepository)
+	userHandler := handler.NewUserHandler(userUseCase)
+
 	e := echo.New()
-	e.GET("/user/get", get)
-	e.POST("/user/create", create)
-
+	handler.InitRouting(e, userHandler)
 	e.Logger.Fatal(e.Start(":8080"))
-}
-
-func get(c echo.Context) error {
-	u := User{Name:"sugio", Email:"sugio@test.com"}
-	if err := c.Bind(u); err != nil {
-		return err
-	}
-	return c.JSON(http.StatusOK, u)
-}
-
-func create(c echo.Context) error {
-	u := User{}
-	if err := c.Bind(&u); err != nil {
-		return err
-	}
-	return c.JSON(http.StatusOK, u)
 }
