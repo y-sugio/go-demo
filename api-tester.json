@@ -81,7 +81,7 @@
                     "version": "V11"
                   },
                   "host": "${host}",
-                  "path": "/user/get"
+                  "path": "/user/1"
                 },
                 "id": "eea78b64-5d17-42b8-82d1-a933a8763427",
                 "name": "ユーザ取得",
