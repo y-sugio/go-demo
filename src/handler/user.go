@@ -11,11 +11,11 @@ type UserHandler interface {
 	GET() echo.HandlerFunc
 }
 
-type userHandler struct{
+type userHandler struct {
 	uc usecase.UserUseCase
 }
 
-func NewUserHandler(uc usecase.UserUseCase) UserHandler{
+func NewUserHandler(uc usecase.UserUseCase) UserHandler {
 	return &userHandler{uc: uc}
 }
 
@@ -24,8 +24,8 @@ type requestGetUser struct {
 }
 
 type responseGetUser struct {
-	Id int64 `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
+	Id    int64  `json:"id,omitempty"`
+	Name  string `json:"name,omitempty"`
 	Email string `json:"email,omitempty"`
 }
 
@@ -42,8 +42,8 @@ func (uh *userHandler) GET() echo.HandlerFunc {
 		}
 
 		res := responseGetUser{
-			Id:      foundUser.Id,
-			Name:   foundUser.Name,
+			Id:    foundUser.Id,
+			Name:  foundUser.Name,
 			Email: foundUser.Email,
 		}
 

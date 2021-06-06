@@ -5,6 +5,5 @@ import (
 )
 
 func InitRouting(e *echo.Echo, userHandler UserHandler) {
-
 	e.GET("/user/:id", userHandler.GET())
 }
