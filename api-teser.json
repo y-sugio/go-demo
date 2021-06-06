@@ -1,0 +1,111 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "id": "93a1632a-bfae-4abc-8b63-3aa22cf9aa30",
+        "name": "go-demo"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Scenario",
+            "description": "",
+            "id": "80db6dbb-3c6d-4711-bad6-6ddf52f88603",
+            "name": "ユーザ"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"name\":\"sugio\",\n  \"email\":\"sugio@test.com\",\n  \"password\":\"password\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "${host}",
+                  "path": "/user/create"
+                },
+                "id": "d353527b-2f2b-4a4b-9f6f-fe26981efba3",
+                "name": "ユーザ作成",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "${host}",
+                  "path": "/user/get"
+                },
+                "id": "eea78b64-5d17-42b8-82d1-a933a8763427",
+                "name": "ユーザ取得",
+                "headers": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "environments": [
+    {
+      "id": "80ad661c-f138-44cb-91a5-b434fc0663e5",
+      "name": "localhost",
+      "variables": {
+        "8a56b679-7cc4-4409-8834-b3322fb3000e": {
+          "createdAt": "2021-06-06T14:43:29.133+09:00",
+          "name": "host",
+          "value": "localhost:8080",
+          "enabled": true,
+          "private": false
+        }
+      }
+    }
+  ]
+}
