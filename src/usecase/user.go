@@ -3,6 +3,7 @@ package usecase
 import (
 	"domain/model"
 	"domain/repository"
+	"fmt"
 )
 
 type UserUseCase interface {
@@ -30,6 +31,7 @@ func (uc *userUseCase) FindByID(id int64) (*model.User, error) {
 func (uc *userUseCase) Create(user *model.User) (*model.User, error) {
 	createdUser, err := uc.repo.Create(user)
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 

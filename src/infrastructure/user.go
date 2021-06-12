@@ -3,6 +3,7 @@ package infrastructure
 import (
 	"domain/model"
 	"domain/repository"
+	"infrastructure/database/query"
 )
 
 type UserRepository struct{}
@@ -18,6 +19,6 @@ func (ur *UserRepository) FindByID(id int64) (*model.User, error) {
 }
 
 func (ur *UserRepository) Create(user *model.User) (*model.User, error) {
-	user.Id = 1
-	return user, nil
+	err := query.Ins("user", user)
+	return user, err
 }
