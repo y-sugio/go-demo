@@ -13,7 +13,7 @@ func Ins(table string, user *model.User) (err error){
 	}
 	defer db.Close()
 
-	rows, err := db.Prepare(makeQuery(table, user))
+	rows, err := db.Prepare(makeInsQuery(table, user))
 	if err != nil {
 		return
 	}
@@ -28,7 +28,7 @@ func Ins(table string, user *model.User) (err error){
 	return nil
 }
 
-func makeQuery(table string, user *model.User) (query string){
+func makeInsQuery(table string, user *model.User) (query string){
 	query = "insert into " + table + "(name, email, password) values(?, ?, ?)"
 	return
 }
