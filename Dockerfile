@@ -1,6 +1,11 @@
 FROM golang:latest
 
-RUN mkdir /go-demo
-COPY src /go-demo/src
+ARG GO111MODULE=auto
+ARG GOPATH=/go
 
-CMD ["go", "run", "/go-demo/src/server/server.go"]
+ENV GO111MODULE=${GO111MODULE}
+ENV GOPATH=${GOPATH}
+
+COPY src ./src
+
+CMD ["go", "run", "./src/server/server.go"]
